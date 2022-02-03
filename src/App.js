@@ -5,8 +5,23 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+const App = () => {
+  const [pokemons, setPokemons] = useState("I am state");
 
-function App() {
+  useEffect(() => {
+    axios.get("https://pokeapi.co/api/v2/pokemon").then((resp) => {
+      const nameURlArray = resp.data.results.map((r) =>
+        axios.get(r.url).then((res) => res.data)
+      );
+      Promise.all(nameURlArray).then((data) => {
+        setPokemons(data);
+      });
+    });
+  }, []);
+
   return (
     <div>
       <Navbar
@@ -41,6 +56,6 @@ function App() {
       </Container>
     </div>
   );
-}
+};
 
 export default App;
