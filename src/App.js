@@ -5,11 +5,14 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+
 const App = () => {
-  const [pokemons, setPokemons] = useState("I am state");
+  const [pokemons, setPokemons] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokemon").then((resp) => {
@@ -29,29 +32,32 @@ const App = () => {
         style={{ backgroundColor: "#FF5733" }}
       >
         <Container>
-          <Navbar.Brand href="#">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#">Pokemon App</Navbar.Brand>
         </Container>
       </Navbar>
       <Container>
-        <Row xs={2} md={4} className=" justify-content-between my-4 d-flex g-5">
-          {Array.from({ length: 4 }).map((_, idx) => (
-            <Col>
-              <Card style={{ width: "18rem" }}>
-                <Card.Img
-                  variant="top"
-                  img
-                  src="https://source.unsplash.com/WrUGh2DXfiw/1600x900"
-                />
+        <Row
+          xs={2}
+          md={4}
+          className=" justify-content-between my-5 d-flex gap-3"
+        >
+          {!isLoading && (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          )}
+          {isLoading &&
+            pokemons.map((pokemon) => (
+              <Card bg="dark" text="light" key={pokemon.name}>
+                <Card.Header>{pokemon.name}</Card.Header>
                 <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </Card.Text>
+                  <Card.Img
+                    variant="top"
+                    src={pokemon.sprites.other.dream_world.front_default}
+                  />
                 </Card.Body>
               </Card>
-            </Col>
-          ))}
+            ))}
         </Row>
       </Container>
     </div>
