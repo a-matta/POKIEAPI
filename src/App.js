@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 const App = () => {
   const [pokemons, setPokemons] = useState();
@@ -59,6 +60,9 @@ const App = () => {
               </Card>
             ))}
         </Row>
+        <Button bg="dark" type="submit" className="submit">
+          Show more Pokemons
+        </Button>
       </Container>
     </div>
   );
