@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: revert;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  height: calc(100vh - 56px);
+  margin-top: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.hero {
+  background: url("../public/ray-mallick-5J1bHRX1fNw-unsplash.jpg") no-repeat
+    fixed center center/cover;
+  height: 100%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  padding: 0;
+  filter: saturate(25%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img.full {
+  width: 90%;
+}
+.normal {
+  background-color: #a8a77a !important;
+}
+.fire {
+  background-color: #ee8130 !important;
+}
+.water {
+  background-color: #6390f0 !important;
+}
+.grass {
+  background-color: #7ac74c !important;
+}
+.electric {
+  background-color: #f7d02c !important;
+}
+.ice {
+  background-color: #96d9d6 !important;
+}
+.fighting {
+  background-color: #c22e28 !important;
+}
+.poison {
+  background-color: #a33ea1 !important;
+}
+.ground {
+  background-color: #e2bf65 !important;
+}
+.flying {
+  background-color: #a98ff3 !important;
+}
+.psychic {
+  background-color: #f95587 !important;
+}
+.bug {
+  background-color: #a6b91a !important;
+}
+.rock {
+  background-color: #b6a136 !important;
+}
+.ghost {
+  background-color: #735797 !important;
+}
+.dark {
+  background-color: #705746 !important;
+}
+.dragon {
+  background-color: #6f35fc !important;
+}
+.steel {
+  background-color: #b7b7ce !important;
+}
+.fairy {
+  background-color: #d685ad !important;
+}
+
+.card-title {
+  text-transform: uppercase;
+}
+
+.card:hover {
+  filter: saturate(75%);
 }
